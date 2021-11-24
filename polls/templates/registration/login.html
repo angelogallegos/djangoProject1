@@ -1,0 +1,25 @@
+{% extends 'base/base_login.html' %}
+
+{% block contenido %}
+
+<p>Inicio De Sesion Requerido</p>
+<form method="post">
+    {% csrf_token %}
+                <label for="usuario">
+                    usuario
+                <input type="text" name="username" >
+               </label>
+                <label for="pass">
+                    Contraseña
+                <input type="password" name="password" >
+                </label>
+    <button type="submit"> Ingresar</button>
+</form>
+
+
+
+{% endblock %}
+
+
+
+

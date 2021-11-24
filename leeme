@@ -1,0 +1,26 @@
+Si pycharm da problemas con el entorno virtual
+-borrar la carpeta env y .idea
+-crear de nuevo el entorno virtual en consola :virtualenv -p python3.9 env
+-(si da error instalar virtualenv con pip)
+- instalar entorno virtual: pip install virtualenv
+-activar el entorno : env\bin\activate   ó env\Scripts\activate
+- SI TE DA UN ERROR SE HACSEXO  PON ESTE COMANDO  EN LA TERMINAL: Set-ExecutionPolicy Unrestricted -Force
+- instalar django : pip install Django==3.2.9
+
+-correr el server:  python manage.py runserver  o (python3 manage.py runserver)
+-para detener el server ctr+c en la terminal
+
+
+//////////////////////
+crear super usuario
+
+superuser :
+
+/////// portar modelos a LA BASE DE DATOS
+
+>>>>Siempre ejecutar los comandos al hacer cambios a los modelos
+
+python manage.py makemigrations
+python manage.py migrate
+
+
