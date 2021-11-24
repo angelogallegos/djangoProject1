@@ -23,8 +23,8 @@ class Especie(models.Model):
     Longitud = models.CharField(max_length=100, blank=True, null=True, default='')
     Latitud = models.CharField(max_length=100, blank=True, null=True, default='')
 
-    def __str__(self):
-        return self.Nombre
+    def __int__(self):
+        return self.id
 
 
 class Tipo(models.Model):
