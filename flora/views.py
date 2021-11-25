@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 # Create your views here.
 def mostrar_especies(request):
-    return render(request, 'mostrar_flora.html')
+    return render(request, 'mostrar_especie.html')
 
 
 
