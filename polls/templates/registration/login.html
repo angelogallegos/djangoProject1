@@ -2,18 +2,33 @@
 
 {% block contenido %}
 
-<p>Inicio De Sesion Requerido</p>
 <form method="post">
     {% csrf_token %}
-                <label for="usuario">
-                    usuario
-                <input type="text" name="username" >
-               </label>
-                <label for="pass">
-                    Contraseña
-                <input type="password" name="password" >
-                </label>
-    <button type="submit"> Ingresar</button>
+
+    <section class="form-login">
+
+    <div class="in-flex">
+    <h5>Iniciar Sección</h5>
+
+    <div class="in-flex">
+
+       <div>
+           <input class="controls" type="text" name="username" value="" placeholder="Usuario">
+       </div>
+
+       <div>
+           <input class="controls" type="password" name="password" value="" placeholder="Contraseña">
+       </div>
+
+       <div>
+          <input class="buttons" type="submit" name="" value="Ingresar">
+       </div>
+
+    </div>
+
+   </div>
+
+  </section>
 </form>
 
 
