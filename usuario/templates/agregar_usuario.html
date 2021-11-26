@@ -12,7 +12,38 @@
 {% block contenido %}
 
     <div class="content-wrapper">
-<h1>Agregar usuario usuarios</h1>
+
+    <div class="container " >
+        <div class="abs-center">
+            <form style="width: 450px">
+                <h1 style="color: darkgoldenrod; text-align: center">Agregar usuario</h1>
+         <div class="form-group">
+        <label for="inputAddress">Nombre</label>
+              <input type="text" class="form-control" id="nombreusuario" placeholder="Ingrese su nombre">
+        </div>
+         <div class="form-group">
+            <label for="inputAddress2">Correo</label>
+            <input type="text" class="form-control" id="correousuario" placeholder="Ingrese su correo electronico">
+        </div>
+        <div class="form-group">
+             <label for="inputAddress2">Direccion</label>
+             <input type="text" class="form-control" id="direccionusuario" placeholder="Ingrese su direccion de domicilio">
+        </div>
+        <div class="form-group">
+            <label for="inputAddress2">Usuario</label>
+             <input type="text" class="form-control" id="usuariousuario" placeholder="Ingrese su nombre de usuario">
+        </div>
+        <div class="form-group">
+            <label for="inputAddress2">Contraseña</label>
+            <input type="text" class="form-control" id="contraseñausuario" placeholder="Ingrese su contraseña">
+        </div>
+            <div class="form-group" style="float: right">
+                <button type="button" class="btn btn-danger">Canselar</button>
+                <button type="button" class="btn btn-success">Guardar</button>
+            </div>
+     </form>
+            </div>
+    </div>
     </div>
 {% endblock %}
 
