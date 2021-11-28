@@ -1,4 +1,9 @@
 from django.shortcuts import render
+from django.views.generic import UpdateView, DeleteView, ListView, CreateView, TemplateView
+from django.urls import reverse_lazy
+
+from flora.models import Zona
+from flora.forms import FormularioZona
 
 # Create your views here.
 def mostrar_especie(request):
@@ -24,5 +29,26 @@ def agregar_tipo_especie(request):
 def agregar_origen(request):
     return render(request, 'agregar_origen.html')
 
-def agregar_zona(request):
-    return render(request, 'agregar_zona.html')
+
+
+class RegistrarZona(CreateView):
+    model = Zona
+    template_name = 'agregar_zona.html'
+    form_class = FormularioZona
+    success_url = reverse_lazy('mostrar_zona')
+
+class ListarZona(ListView):
+    model = Zona
+    template_name = 'mostrar_zona.html'
+    queryset = Zona.objects.all()
+
+class ModificarZona(UpdateView):
+    model = Zona
+    template_name = 'modificar_zona.html'
+    form_class = FormularioZona
+    success_url = reverse_lazy('mostrar_zona')
+
+class EliminarZona(DeleteView):
+    model = Zona
+    template_name = 'confirmar_elimminacion.html'
+    success_url = reverse_lazy('mostrar_zona')

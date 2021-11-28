@@ -12,7 +12,7 @@
     <div class="content-wrapper">
 <h1 style="color: darkgoldenrod; text-align: center; margin-top: 25px; margin-bottom: 15px;">Lista de zonas universitarias</h1>
 
-    <table class="table" >
+    <!--<table class="table" >
   <thead class="thead-dark" >
     <tr>
       <th scope="col">#</th>
@@ -62,11 +62,71 @@
       </td>
     </tr>
   </tbody>
-</table>
+</table>-->
+    <div class="border mt-2">
+                                    <div class="card">
+                                        <div class="table-stats order-table ov-h">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Nombre</th>
+                                                        <th>Descripcion</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for a in object_list %}
+                                                        <tr>
+                                                            <td>{{ a.Nombre }}</td>
+                                                            <td> {{a.Descripcion }}</td>
+                                                            <td>
+                                                                <p>
+                                                                    <a onclick="abrir_modal_creacion('{% url 'modificar_zona' a.id %}')" class="btn btn-primary">Editar</a>
+                                                                    <a onclick="abrir_modal_eliminar('{% url 'eliminar_zona' a.id %}')" class="btn btn-danger">Eliminar</a>
+                                                                </p>
+                                                            </td>
+                                                        </tr>
 
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
 
+                                    </div>
+                                </div>
+<section>
+                    <div class="container">
+                           {# info adicional #}
+                    </div>
+                    <div class="modal fade" id="crear" role="dialog">
+
+                    </div>
+                    <div class="modal fade" id="eliminar" role="dialog">
+
+                    </div>
+                </section>
     </div>
+
+
+
+      <script type="text/javascript">
+        //var $=jQuery.noConflict();
+
+        function abrir_modal_creacion(url){
+            $("#crear").load(url,function (){
+                $(this).modal('show');
+            })
+        }
+
+        function abrir_modal_eliminar(url){
+            $("#eliminar").load(url,function (){
+                $(this).modal('show');
+            })
+        }
+
+    </script>
 {% endblock %}
+
+
 
 {% block footer %}
     {% include 'base/footer.html' %}

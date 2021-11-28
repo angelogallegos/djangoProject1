@@ -4,6 +4,7 @@ Si pycharm da problemas con el entorno virtual
 -(si da error instalar virtualenv con pip)
 - instalar entorno virtual: pip install virtualenv
 -activar el entorno : env\bin\activate   ó env\Scripts\activate
+- desactivar entono virtual : deactivate
 - SI TE DA UN ERROR SE HACSEXO  PON ESTE COMANDO  EN LA TERMINAL: Set-ExecutionPolicy Unrestricted -Force
 - instalar django : pip install Django==3.2.9
 
@@ -23,4 +24,8 @@ superuser :
 python manage.py makemigrations
 python manage.py migrate
 
+
+instalar crispy-forms
+pip install django-crispy-forms
+y si te da problemas ejecuta el proyecto con el comando y no con la flecita verde
 
