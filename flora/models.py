@@ -58,8 +58,8 @@ class Origen(models.Model):
         return self.Nombre
 
 class Zona(models.Model):
-    Nombre = models.CharField(max_length=20,blank=False, unique=True)
-    Descripcion = models.CharField(max_length=50, blank=False)
+    Nombre = models.CharField(max_length=60,blank=False, unique=True)
+    Descripcion = models.CharField(max_length=200, blank=False)
     Especie = models.ManyToManyField(to='flora.Especie', through='flora.Ubicacion')
     def __str__(self):
         return self.Nombre
