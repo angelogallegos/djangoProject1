@@ -9,18 +9,27 @@ from flora.forms import FormularioEspecie
 
 
 # Crud especie.
-def mostrar_especie(request):
-    return render(request, 'mostrar_especie.html')
-
-def agregar_especie(request):
-    return render(request, 'agregar_especie.html')
-
 class RegistrarEspecie(CreateView):
     model = Especie
     template_name = 'agregar_especie.html'
     form_class = FormularioEspecie
     success_url = reverse_lazy('mostrar_especie')
 
+class ListarEspecie(ListView):
+    model = Especie
+    template_name = 'mostrar_especie.html'
+    queryset = Especie.objects.all()
+
+class ModificarEspecie(UpdateView):
+        model = Especie
+        template_name = 'modificar_especie.html'
+        form_class = FormularioEspecie
+        success_url = reverse_lazy('mostrar_especie')
+
+class EliminarEspecie(DeleteView):
+        model = Especie
+        template_name = 'confirmar_eliminacion_especie.html'
+        success_url = reverse_lazy('mostrar_especie')
 
 # Crud de zona
 class RegistrarZona(CreateView):

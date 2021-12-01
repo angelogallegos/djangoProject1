@@ -9,63 +9,76 @@
 {% endblock %}
 
 {% block contenido %}
-<div class="content-wrapper">
-<h1 style="color: darkgoldenrod; text-align: center; margin-top: 25px; margin-bottom: 15px;">Lista de especies arboreas</h1>
-
-    <table class="table" >
-  <thead class="thead-dark" >
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Foto</th>
-      <th scope="col">Nombre </th>
-      <th scope="col">Nombre Cientifico</th>
-      <th scope="col">Zona</th>
-      <th scope="col">Codigo QR</th>
-      <th scope="col"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-        <td></td>
-      <td></td>
-      <td></td>
-        <td></td>
-      <td></td>
-      <td style="float: right">
-          <button type="button" class="btn btn-primary">Modificar</button>
-          <button type="button" class="btn btn-danger">Eliminar</button>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-       <td></td>
-      <td></td>
-      <td></td>
-        <td></td>
-      <td></td>
-      <td style="float: right">
-          <button type="button" class="btn btn-primary">Modificar</button>
-          <button type="button" class="btn btn-danger">Eliminar</button>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-         <td></td>
-      <td></td>
-      <td></td>
-        <td></td>
-      <td></td>
-      <td style="float: right">
-          <button type="button" class="btn btn-primary">Modificar</button>
-          <button type="button" class="btn btn-danger">Eliminar</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+    <div class="content-wrapper">
+       <h1 style="color: darkgoldenrod; text-align: center">Lista de especies</h1>
 
 
+    <div class="border mt-2">
+                                    <div class="card">
+                                        <div class="table-stats order-table ov-h">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Nombre</th>
+                                                        <th>Nombre Cientifico</th>
+                                                        <th>Autor</th>
+                                                        <th>Origen</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for a in object_list %}
+                                                        <tr>
+                                                            <td>{{ a.Nombre }}</td>
+                                                            <td> {{a.Nombre_Cientifico }}</td>
+                                                            <td> {{a.Autor }}</td>
+                                                            <td> {{a.Origen }}</td>
+                                                            <td>
+                                                                <p>
+                                                                    <a onclick="abrir_modal_creacion('{% url 'modificar_especie' a.id %}')" class="btn btn-primary btn-block">Editar</a>
+                                                                    <a onclick="abrir_modal_eliminar('{% url 'eliminar_especie' a.id %}')" class="btn btn-danger btn-block">Eliminar</a>
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
+                                </div>
+<section>
+                    <div class="container">
+                           {# info adicional #}
+                    </div>
+                    <div class="modal fade" id="crear" role="dialog">
+
+                    </div>
+                    <div class="modal fade" id="eliminar" role="dialog">
+
+                    </div>
+                </section>
     </div>
+
+
+
+      <script type="text/javascript">
+        //var $=jQuery.noConflict();
+
+        function abrir_modal_creacion(url){
+            $("#crear").load(url,function (){
+                $(this).modal('show');
+            })
+        }
+
+        function abrir_modal_eliminar(url){
+            $("#eliminar").load(url,function (){
+                $(this).modal('show');
+            })
+        }
+
+    </script>
+
 {% endblock %}
 
 {% block footer %}

@@ -35,7 +35,7 @@ class Tipo(models.Model):
         return self.Nombre
 
 class Imagen(models.Model):
-    Nombre = models.CharField(max_length=20, blank=True)
+    Nombre = models.CharField(max_length=20, blank=True, null=True)
 
     def __int__(self):
         return self.id
