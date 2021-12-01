@@ -3,7 +3,9 @@ from django.views.generic import UpdateView, DeleteView, ListView, CreateView, T
 from django.urls import reverse_lazy
 
 from flora.models import Zona
+from flora.models import Origen
 from flora.forms import FormularioZona
+from flora.forms import FormularioOrigen
 
 # Create your views here.
 def mostrar_especie(request):
@@ -29,8 +31,19 @@ def agregar_tipo_especie(request):
 def agregar_origen(request):
     return render(request, 'agregar_origen.html')
 
+# Crud de origen
+class RegistrarOrigen(CreateView):
+    model = Origen
+    template_name = 'agregar_origen.html'
+    form_class = FormularioOrigen
+    success_url = reverse_lazy('mostrar_origen')
 
+class ListarOrigen(ListView):
+        model = Origen
+        template_name = 'mostrar_origen.html'
+        queryset = Origen.objects.all()
 
+# Crud de zona
 class RegistrarZona(CreateView):
     model = Zona
     template_name = 'agregar_zona.html'

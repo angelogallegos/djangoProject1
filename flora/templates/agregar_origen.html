@@ -1,4 +1,5 @@
 {% extends 'base/base.html' %}
+{% load crispy_forms_filters %}
 
 {% block navbar %}
     {% include 'base/navbar.html' %}
@@ -9,28 +10,20 @@
 {% endblock %}
 
 {% block contenido %}
-    <div class="content-wrapper">
+    <div class="content-wrapper" >
 
    <div class="container " >
+       <h1 style="color: darkgoldenrod; text-align: center">Agregar Zona UdeC</h1>
         <div class="abs-center" >
-            <form style="width: 450px">
-                <h1 style="color: darkgoldenrod; text-align: center">Agregar origen de especie</h1>
-         <div class="form-group">
-        <label for="inputAddress">Nombre</label>
-              <input type="text" class="form-control" id="nombreorigen" placeholder="Ingrese nombre de origen">
-        </div>
-          <div class="form-group">
-        <label for="inputAddress">País</label>
-              <input type="text" class="form-control" id="paisorigen" placeholder="Ingrese el país de origen">
-        </div>
 
-            <div class="form-group" style="float: right">
-                <button type="button" class="btn btn-danger">Canselar</button>
-                <button type="button" class="btn btn-success">Guardar</button>
-            </div>
-     </form>
-            </div>
+         <form method="post" action="{% url 'agregar_origen' %}">
+             {% csrf_token %}
+             {{ form | crispy }}
+             <button class="btn btn-primary" type="submit">Guardar</button>
+         </form>
+        </div>
     </div>
+
 
   </div>
 {% endblock %}

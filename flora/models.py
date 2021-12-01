@@ -54,8 +54,8 @@ class Humedad_Suelo(models.Model):
 class Origen(models.Model):
     Nombre = models.CharField(max_length=20, blank=False)
     Pais = models.CharField(max_length=25, blank=True)
-    def __int__(self):
-        return self.id
+    def __str__(self):
+        return self.Nombre
 
 class Zona(models.Model):
     Nombre = models.CharField(max_length=20,blank=False, unique=True)

@@ -11,7 +11,127 @@
 {% block contenido %}
     <div class="content-wrapper">
 
-   <h1>Agregar especie</h1>
+   <div class="container " >
+    <h1 style="color: darkgoldenrod; text-align: center">Agregar especie</h1>
+     <div class="abs-center" style="float: left ; padding: 20px">
+
+         <form style="width: 450px">
+
+             <div class="form-group" style="float: left" >
+                  <label for="inputAddress">Nombre comun</label>
+                 <input type="text" class="form-control" id="nombreorigen" placeholder="Ingrese nombre comun">
+             </div>
+             <div class="form-group" style="float: right">
+                 <label for="inputAddress">Nombre cientifico</label>
+                 <input type="text" class="form-control" id="nombrecientifico" placeholder="Ingrese nombre cientifico">
+             </div>
+             <div class="form-group" style="float: left">
+                  <label for="inputAddress">Nombre autor</label>
+                 <input type="text" class="form-control" id="nombreautor" placeholder="Ingrese nombre autor">
+             </div>
+             <div class="form-group" style="float: right">
+                 <label for="inputAddress">Altura de especie</label>
+                 <input type="text" class="form-control" id="altura" placeholder="Ejemplo: 12 m">
+             </div>
+             <div class="form-group" style="float: left">
+                  <label for="inputAddress">Origen</label>
+                  <br>
+                  <select name="selectorigen" id="selectorigen" style="width: 220px">
+                      <option value="valor1" > valor1 </option>
+                      <option value="valor2" > valor2 </option>
+                      <option value="valor3" > valor3 </option>
+                  </select>
+             </div>
+             <div class="form-group" style="float: right">
+                  <label for="inputAddress">Tipo</label>
+                  <br>
+                  <select name="selecttipo" id="selecttipo" style="width: 220px">
+                      <option value="valor1" > valor1 </option>
+                      <option value="valor2" > valor2 </option>
+                      <option value="valor3" > valor3 </option>
+                  </select>
+             </div>
+             <div class="form-group" style="float: left" >
+                  <label for="inputAddress">Estado</label>
+                  <br>
+                  <select name="selectestado" id="selectestado" style="width: 220px">
+                      <option value="valor1" > valor1 </option>
+                      <option value="valor2" > valor2 </option>
+                      <option value="valor3" > valor3 </option>
+                  </select>
+             </div>
+             <div class="form-group" style="float: right" >
+                  <label for="inputAddress">Luminosidad</label>
+                  <br>
+                  <select name="selectluminosidad" id="selectluminosidad" style="width: 220px">
+                      <option value="valor1" > valor1 </option>
+                      <option value="valor2" > valor2 </option>
+                      <option value="valor3" > valor3 </option>
+                  </select>
+             </div>
+             <div class="form-group" style="float: right" >
+                  <label for="inputAddress">Tolerancia</label>
+                  <br>
+                  <select name="selecttolerancia" id="selecttoletancia" style="width: 220px">
+                      <option value="valor1" > valor1 </option>
+                      <option value="valor2" > valor2 </option>
+                      <option value="valor3" > valor3 </option>
+                  </select>
+             </div>
+             <div class="form-group" style="float: left" >
+                  <label for="inputAddress">Humedad</label>
+                  <br>
+                  <select name="selecthumedad" id="selecthumedad" style="width: 220px">
+                      <option value="valor1" > valor1 </option>
+                      <option value="valor2" > valor2 </option>
+                      <option value="valor3" > valor3 </option>
+                  </select>
+             </div>
+         </form>
+     </div>
+                 <div class="abs-center" style="float: left ; padding: 20px">
+                     <form style="width: 450px">
+                     <div class="form-group" style="float: left">
+                     <label for="inputAddress">Descripción hojas</label>
+                     <textarea style="resize: none"  class="form-control" id="deshojas" rows="3" placeholder="Ingrese descripción"></textarea>
+                     </div>
+                     <div class="form-group" style="float: right">
+                     <label for="inputAddress">Descripción flores</label>
+                     <textarea style="resize: none"  class="form-control" id="desflores" rows="3" placeholder="Ingrese descripción"></textarea>
+                     </div>
+                     <div class="form-group" style="float: end">
+                     <label for="inputAddress">Descripción semillas</label>
+                     <textarea style="resize: none" class="form-control" id="dessemilla" rows="5" placeholder="Ingrese descripción"></textarea>
+                     </div>
+
+                     <div class="form-group" style="float: end" >
+                     <label for="inputAddress">Codigo QR</label>
+                     <input type="text" class="form-control" id="codigoqr" disabled>
+
+                     </div>
+                     </form>
+                 </div>
+                     <div class="abs-center" style="float: end ; padding: 20px">
+                         <form style="width: 100%">
+                         <div>
+                             <label for="formFileLg" class="form-label">Large file input example</label>
+                             <input class="form-control form-control-lg" id="formFileLg" type="file">
+                         </div>
+                         <div>
+                             <label for="formFileLg" class="form-label">Large file input example</label>
+                             <input class="form-control form-control-lg" id="formFileLg" type="file">
+                         </div>
+
+                         <div class="form-group">
+                             <button type="button" class="btn btn-danger">Cancelar</button>
+                             <button type="button" class="btn btn-success">Guardar</button>
+                         </div>
+
+                         </form>
+                     </div>
+     </div>
+</div>
+
 
 
   </div>
