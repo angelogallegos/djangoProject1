@@ -8,7 +8,7 @@
             <form method="post" action="{% url 'eliminar_especie' object.id %}">
                 {% csrf_token %}
                 <p><strong>¿Decea eliminar la especie {{ object.Nombre }} ?</strong></p>
-                <button class="btn btn-danger" type="submit">Eliminar Especie</button>
+                <button class="btn btn-warning" type="submit">Eliminar Especie</button>
             </form>
         </div>
         <div class="modal-footer">
