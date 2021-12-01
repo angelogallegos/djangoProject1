@@ -4,8 +4,6 @@ from flora import  views
 urlpatterns = [
     path('', views.mostrar_especie, name='mostrar_especie'),
     path('agregar/', views.agregar_especie, name='agregar_especie'),
-    path('lista/tipo', views.mostrar_tipo_especie, name='mostrar_tipo_especie'),
-    path('agregar/tipo/', views.agregar_tipo_especie, name='agregar_tipo_especie'),
 
     # urls de zona
     path('lista/zona', views.ListarZona.as_view(), name='mostrar_zona'),

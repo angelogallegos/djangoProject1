@@ -13,16 +13,6 @@ def mostrar_especie(request):
 def agregar_especie(request):
     return render(request, 'agregar_especie.html')
 
-def mostrar_tipo_especie(request):
-    return render(request, 'mostrar_tipo_especie.html')
-
-def mostrar_zona(request):
-    return render(request, 'mostrar_zona.html')
-
-def agregar_tipo_especie(request):
-    return render(request, 'agregar_tipo_especie.html')
-
-
 
 # Crud de zona
 class RegistrarZona(CreateView):
