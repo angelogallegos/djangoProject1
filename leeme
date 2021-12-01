@@ -25,7 +25,7 @@ python manage.py makemigrations
 python manage.py migrate
 
 
-instalar crispy-forms
+instalar crispy-forms:
 pip install django-crispy-forms
 y si te da problemas ejecuta el proyecto con el comando y no con la flecita verde
 

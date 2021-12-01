@@ -6,6 +6,7 @@ class Especie(models.Model):
     Nombre_Cientifico = models.CharField(max_length=50, blank=False, null=False, default='')
     Autor = models.CharField(max_length=20, blank=True, null=True, default='')
     Origen = models.ForeignKey(to='flora.Origen', on_delete=models.CASCADE, default='')
+    Pais = models.CharField(max_length=35, blank=True, null=True, default='')
     Altura = models.CharField(max_length=10, blank=False, null=False, default='')
     Tipo = models.ForeignKey(to='flora.Tipo', on_delete=models.CASCADE, default='')
     Estado = models.ForeignKey(to='flora.Estado', on_delete=models.CASCADE, default='')
@@ -30,8 +31,8 @@ class Especie(models.Model):
 class Tipo(models.Model):
     Nombre = models.CharField(max_length=20, blank=False)
 
-    def __int__(self):
-        return self.id
+    def __str__(self):
+        return self.Nombre
 
 class Imagen(models.Model):
     Nombre = models.CharField(max_length=20, blank=True)
@@ -42,20 +43,19 @@ class Imagen(models.Model):
 class Tolerancia_Frio(models.Model):
     Nombre = models.CharField(max_length=50, blank=False)
 
-    def __int__(self):
-        return self.id
+    def __str__(self):
+        return self.Nombre
 
 class Humedad_Suelo(models.Model):
     Nombre = models.CharField(max_length=50, blank=False)
 
-    def __int__(self):
-        return self.id
+    def __str__(self):
+        return self.Nombre
 
 class Origen(models.Model):
     Nombre = models.CharField(max_length=20, blank=False)
-    Pais = models.CharField(max_length=25, blank=True)
-    def __int__(self):
-        return self.id
+    def __str__(self):
+        return self.Nombre
 
 class Zona(models.Model):
     Nombre = models.CharField(max_length=20,blank=False, unique=True)
@@ -75,11 +75,11 @@ class Ubicacion(models.Model):
 class Luminosidad(models.Model):
     Nombre = models.CharField(max_length=50, blank=False)
 
-    def __int__(self):
-        return self.id
+    def __str__(self):
+        return self.Nombre
 
 class Estado(models.Model):
-    Nombre = models.CharField(max_length=20, blank=False)
+    Nombre = models.CharField(max_length=40, blank=False)
 
-    def __int__(self):
-        return self.id
+    def __str__(self):
+        return self.Nombre
