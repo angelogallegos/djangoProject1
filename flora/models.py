@@ -16,7 +16,7 @@ class Especie(models.Model):
     Hojas = models.CharField(max_length=50, blank=False, null=False, default='')
     Flores = models.CharField(max_length=50, blank=False, null=False, default='')
     Semillas = models.CharField(max_length=50, blank=False, null=False, default='')
-    Imagen_Perfil = models.CharField(max_length=100, blank=True, null=True, default='')
+    Imagen_Perfil = models.ImageField(upload_to="Imagen_Perfil", null=True, default='')
     Imagen = models.ForeignKey(to='flora.Imagen', on_delete=models.CASCADE, default='')
     Zona = models.ManyToManyField(to='flora.Zona',through='flora.Ubicacion')
     QR = models.CharField(max_length=100, blank=True, null=True, default='')

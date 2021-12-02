@@ -1,4 +1,5 @@
 {% extends 'base/base_login.html' %}
+{% load crispy_forms_tags %}
 
 {% block contenido %}
 
@@ -8,21 +9,17 @@
     <section class="form-login">
 
     <div class="in-flex">
-    <h5>Iniciar Sección</h5>
+    <h5>Iniciar Sesión</h5>
 
     <div class="in-flex">
 
-       <div>
-           <input class="controls" type="text" name="username" id="username" value="" placeholder="Usuario">
-       </div>
+       <form method="post">{% csrf_token %}
+           {{ form_login | crispy }}
 
-       <div>
-           <input class="controls" type="password" name="password" id="password" value="" placeholder="Contraseña">
-       </div>
-
-       <div>
-          <input class="buttons" type="submit" name="" id="ingresar" value="Ingresar">
-       </div>
+             <div class="row justify-content-md-center">
+                <button type="submit" class="btn btn-warning">Ingresar</button>
+            </div>
+       </form>
 
     </div>
 

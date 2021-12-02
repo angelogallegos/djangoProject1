@@ -16,7 +16,7 @@
        <h1 style="color: darkgoldenrod; text-align: center">Agregar una especie arborea</h1>
         <!--<div class="abs-center" >-->
 
-         <form method="post" action="{% url 'agregar_especie' %}">
+         <form method="post" enctype="multipart/form-data" action="{% url 'agregar_especie' %}">
              {% csrf_token %}
              {{ form | crispy }}
              <button class="btn btn-success btn-block" style="color: white" type="submit">Guardar</button>
