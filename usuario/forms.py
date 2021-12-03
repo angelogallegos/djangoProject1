@@ -11,7 +11,7 @@ class FormularioUsuario(UserCreationForm):
         fields = ('nombres', 'apellidos', 'email', 'username', 'password1', 'password2')
 
         labels = {
-            'nombres' :  'Ingrese nombre de la zona'
+            'nombres' :  'Ingrese nombre de usuario'
          }
 
 class FormularioLogin (forms.ModelForm):

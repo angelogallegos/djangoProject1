@@ -58,3 +58,9 @@ class EliminarUsuario(DeleteView):
         object.is_active = False
         object.save()
         return redirect('listar_usuarios')
+
+class ModificarUsuario(UpdateView):
+    model = Usuario
+    template_name = 'modificar_usuario.html'
+    form_class = FormularioUsuario
+    success_url = reverse_lazy('listar_usuarios')
