@@ -18,7 +18,7 @@ class FormularioEspecie(forms.ModelForm):
     class Meta:
         model = Especie
         fields = ('Nombre', 'Nombre_Cientifico', 'Autor', 'Origen','Pais','Altura','Tipo', 'Estado', 'Luminosidad', 'Tolerancia_Frio', 'Humedad_Suelo',
-                  'Hojas', 'Flores', 'Semillas', 'Imagen_Perfil', 'Imagen', 'Zona', 'QR', 'Imagen_QR', 'Longitud', 'Latitud')
+                  'Hojas', 'Flores', 'Semillas', 'Imagen_Perfil', 'Imagen1','Imagen2', 'Imagen3', 'Zona', 'QR', 'Imagen_QR', 'Longitud', 'Latitud')
 
         labels = {
             'Nombre' :  'Ingrese un nombre',
@@ -36,7 +36,9 @@ class FormularioEspecie(forms.ModelForm):
             'Flores' : 'Ingrese la descripcion de las flores',
             'Semillas' : 'Ingrese la descripcion de las semillas',
             'Imagen_Perfil' : 'Ingrese imagen de perfil',
-            'Imagen' : 'Ingrese imagenes',
+            'Imagen1' : 'Ingrese primera imagen',
+            'Imagen2': 'Ingrese segunda imagen',
+            'Imagen3': 'Ingrese tercera imagen',
             'Zona' : 'Seleccione su zona',
             'QR' : 'Codigo del QR',
             'Imagen_QR' : 'Ruta del QR',

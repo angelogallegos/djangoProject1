@@ -3,21 +3,21 @@
 
 {% block contenido %}
 
-<form method="post">
+<form method="post" style="background-color: #3618c0;">
     {% csrf_token %}
 
-    <section class="form-login">
+    <section class="form-login" >
 
-    <div class="in-flex">
+    <div class="in-flex" >
     <h5>Iniciar Sesión</h5>
 
-    <div class="in-flex">
+    <div class="in-flex" >
 
-       <form method="post">{% csrf_token %}
+       <form method="post" >{% csrf_token %}
+
            {{ form_login | crispy }}
-
-             <div class="row justify-content-md-center">
-                <button type="submit" class="btn btn-warning">Ingresar</button>
+             <div class="row justify-content-md-center" >
+                <input type="submit" class="buttons" id="ingresar" value="Ingresar"></input>
             </div>
        </form>
 

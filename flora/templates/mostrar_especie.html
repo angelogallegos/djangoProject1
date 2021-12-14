@@ -25,6 +25,7 @@
                                                         <th>Autor</th>
                                                         <th>Origen</th>
                                                         <th>Imagen</th>
+                                                        <th>Imagen2</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -38,6 +39,12 @@
                                                             <td>
                                                                 {% if  a.Imagen_Perfil %}
                                                                 <img src="{{a.Imagen_Perfil.url}}" width="80" height="80">
+                                                                {% endif %}
+
+                                                            </td>
+                                                        <td>
+                                                                {% if  a.Imagen1 %}
+                                                                <img src="{{a.Imagen1.url}}" width="80" height="80">
                                                                 {% endif %}
 
                                                             </td>

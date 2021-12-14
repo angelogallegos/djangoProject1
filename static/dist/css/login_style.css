@@ -3,10 +3,11 @@
   padding: 0px;
   box-sizing: border-box;
   font-family: century gthic;
+  background: #3618c0;
 }
 
 html{
-  background: url('/static/dist/img/bg.png') no-repeat center center fixed;
+  background-color: #3618c0;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -16,6 +17,7 @@ html{
 body {
 
   backgroud-size: 100%;
+
 }
 
 .form-login {

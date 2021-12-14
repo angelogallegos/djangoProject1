@@ -11,7 +11,6 @@ from flora.forms import FormularioEspecie
 from django.contrib.auth.decorators import login_required
 
 # Crud especie.
-
 class RegistrarEspecie(CreateView):
     model = Especie
     template_name = 'agregar_especie.html'
@@ -31,34 +30,33 @@ class ModificarEspecie(UpdateView):
         form_class = FormularioEspecie
         success_url = reverse_lazy('mostrar_especie')
 
-#@login_required()
+
 class EliminarEspecie(DeleteView):
         model = Especie
         template_name = 'confirmar_eliminacion_especie.html'
         success_url = reverse_lazy('mostrar_especie')
 
 # Crud de zona
-#@login_required()
 class RegistrarZona(CreateView):
     model = Zona
     template_name = 'agregar_zona.html'
     form_class = FormularioZona
     success_url = reverse_lazy('mostrar_zona')
 
-#@login_required()
+
 class ListarZona(ListView):
     model = Zona
     template_name = 'mostrar_zona.html'
     queryset = Zona.objects.all()
 
-#@login_required()
+
 class ModificarZona(UpdateView):
     model = Zona
     template_name = 'modificar_zona.html'
     form_class = FormularioZona
     success_url = reverse_lazy('mostrar_zona')
 
-#@login_required()
+
 class EliminarZona(DeleteView):
     model = Zona
     template_name = 'confirmar_elimminacion.html'

@@ -17,7 +17,9 @@ class Especie(models.Model):
     Flores = models.CharField(max_length=50, blank=False, null=False, default='')
     Semillas = models.CharField(max_length=50, blank=False, null=False, default='')
     Imagen_Perfil = models.ImageField(upload_to="Imagen_Perfil", null=True, default='')
-    Imagen = models.ForeignKey(to='flora.Imagen', on_delete=models.CASCADE, default='')
+    Imagen1 = models.ImageField(upload_to="Imagenes", blank=True, null=True, default='')
+    Imagen2 = models.ImageField(upload_to="Imagenes", blank=True, null=True, default='')
+    Imagen3 = models.ImageField(upload_to="Imagenes", blank=True, null=True, default='')
     Zona = models.ManyToManyField(to='flora.Zona',through='flora.Ubicacion')
     QR = models.CharField(max_length=100, blank=True, null=True, default='')
     Imagen_QR = models.CharField(max_length=100, blank=True, null=True, default='')
@@ -33,12 +35,6 @@ class Tipo(models.Model):
 
     def __str__(self):
         return self.Nombre
-
-class Imagen(models.Model):
-    Nombre = models.CharField(max_length=20, blank=True, null=True)
-
-    def __int__(self):
-        return self.id
 
 class Tolerancia_Frio(models.Model):
     Nombre = models.CharField(max_length=50, blank=False)
