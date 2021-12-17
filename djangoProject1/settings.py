@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-ph+t6vp=-ux0u74x#mq5eh6a)!fvl6g@g^d#7qpt3dn7!djj+3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
+    'django_filters',
+    'bootstrapform',
     'polls.apps.PollsConfig',
     'flora',
     'usuario'

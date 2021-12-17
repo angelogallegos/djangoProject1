@@ -8,13 +8,25 @@
     {% include 'base/panel_izquierdo.html' %}
 {% endblock %}
 
+
 {% block contenido %}
 
         <div class="content-wrapper">
        <h1 style="color: darkgoldenrod; text-align: center">Lista de usuarios</h1>
 
+        <form method="GET">
+            <div class="input-group">
+            <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar..." name="buscar" value="">
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="submit">
+                    <i class="fas fa-search fa-sm"></i>
+                </button>
+            </div>
+        </div>
+        </form>
 
     <div class="border mt-2">
+
                                     <div class="card">
                                         <div class="table-stats order-table ov-h">
                                             <table class="table">

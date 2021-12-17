@@ -68,6 +68,7 @@ class Usuario(AbstractBaseUser):
     def __str__(self):
         return self.username
 
+
     # funciomes propias y necesarias para que funcione el custom user model
     def has_perm(self, perm, obj=None):
         return self.is_admin

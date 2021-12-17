@@ -32,3 +32,8 @@ y si te da problemas ejecuta el proyecto con el comando y no con la flecita verd
 instalar pillow para las imagenes
 pip install Pillow
 
+pip install reportlab
+
+
+ python manage.py runserver 0.0.0.0:8000
+python manage.py runserver 192.168.1.26:8000

@@ -1,8 +1,10 @@
+from django.http import HttpResponse
 from django.views.generic import UpdateView, DeleteView, ListView, CreateView, TemplateView
 from django.urls import reverse_lazy
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
+from django.db.models import Q
 
 from usuario.models import Usuario
 from usuario.forms import FormularioUsuario, FormularioLogin
@@ -64,3 +66,14 @@ class ModificarUsuario(UpdateView):
     template_name = 'modificar_usuario.html'
     form_class = FormularioUsuario
     success_url = reverse_lazy('listar_usuarios')
+
+
+import json
+
+def buscar(request):
+    usuarios = Usuario.objects.all()
+    usuarios = [usuario_serializar(user) for user in usuarios]
+    return HttpResponse(json.dumps(usuarios),content_type='application/json')
+
+def usuario_serializar(usuario):
+    return {'Nombre': usuario.nombres, 'Apellido': usuario.apellidos, 'email': usuario.email, 'Usuario': usuario.username}

@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 class Especie(models.Model):
     Nombre = models.CharField(max_length=20, blank=False, null=False, default='')
@@ -79,3 +80,4 @@ class Estado(models.Model):
 
     def __str__(self):
         return self.Nombre
+

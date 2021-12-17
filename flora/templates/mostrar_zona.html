@@ -1,4 +1,5 @@
 {% extends 'base/base.html' %}
+{% load bootstrap %}
 
 {% block navbar %}
     {% include 'base/navbar.html' %}
@@ -9,8 +10,21 @@
 {% endblock %}
 
 {% block contenido %}
+
+
+
     <div class="content-wrapper">
        <h1 style="color: darkgoldenrod; text-align: center">Lista de zonas Universitaria</h1>
+<form method="GET" style="margin-left: 10px; ">
+     <div class="input-group" >
+            {{ filter.form|bootstrap }}
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="submit" style="height: 37px; margin-top: 32px">
+                    <i class="fas fa-search fa-sm"></i>
+                </button>
+            </div>
+        </div>
+</form>
 
 
     <div class="border mt-2">
@@ -24,7 +38,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    {% for a in object_list %}
+                                                    {% for a in filter.qs %}
                                                         <tr>
                                                             <td>{{ a.Nombre }}</td>
                                                             <td> {{a.Descripcion }}</td>

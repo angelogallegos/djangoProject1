@@ -17,8 +17,9 @@ urlpatterns = [
     path('lista/zona/', login_required (views.ListarZona.as_view()), name='mostrar_zona'),
     path('agregar/zona/',login_required (views.RegistrarZona.as_view()), name='agregar_zona'),
     path('modificar/zona/<int:pk>',login_required (views.ModificarZona.as_view()), name='modificar_zona'),
-    path('eliminar/zona/<int:pk>', login_required (views.EliminarZona.as_view()), name='eliminar_zona')
-
+    path('eliminar/zona/<int:pk>', login_required (views.EliminarZona.as_view()), name='eliminar_zona'),
+    path('buscar/especies/', views.buscar, name='buscar_especies'),
+    path('reporte/zona/', views.generar_reporte, name='reporte_zona')
 ]
 
 if settings.DEBUG:
