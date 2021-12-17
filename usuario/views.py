@@ -8,6 +8,7 @@ from django.db.models import Q
 
 from usuario.models import Usuario
 from usuario.forms import FormularioUsuario, FormularioLogin
+from .filters import UsuarioFilter
 
 # Create your views here.
 
@@ -50,6 +51,11 @@ class ListarUsuario(ListView):
     model = Usuario
     template_name = 'listar_usuarios.html'
     queryset = Usuario.objects.filter(is_admin=False, is_active=True)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['filter'] = UsuarioFilter(self.request.GET, queryset=self.get_queryset())
+        return context
 
 class EliminarUsuario(DeleteView):
     model = Usuario

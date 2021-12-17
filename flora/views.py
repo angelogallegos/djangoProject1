@@ -15,6 +15,7 @@ from flora.models import Especie
 from flora.forms import FormularioZona
 from flora.forms import FormularioEspecie
 from .filters import ZonaFilter
+from .filters import EspecieFilter
 
 
 from django.contrib.auth.decorators import login_required
@@ -32,6 +33,10 @@ class ListarEspecie(ListView):
     template_name = 'mostrar_especie.html'
     queryset = Especie.objects.all()
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['filter'] = EspecieFilter(self.request.GET, queryset=self.get_queryset())
+        return context
 
 class ModificarEspecie(UpdateView):
         model = Especie

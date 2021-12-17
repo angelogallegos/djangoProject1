@@ -1,4 +1,5 @@
 {% extends 'base/base.html' %}
+{% load bootstrap %}
 
 {% block navbar %}
     {% include 'base/navbar.html' %}
@@ -14,16 +15,16 @@
         <div class="content-wrapper">
        <h1 style="color: darkgoldenrod; text-align: center">Lista de usuarios</h1>
 
-        <form method="GET">
-            <div class="input-group">
-            <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar..." name="buscar" value="">
+<form method="GET" style="margin-left: 10px; ">
+     <div class="input-group" >
+            {{ filter.form|bootstrap }}
             <div class="input-group-append">
-                <button class="btn btn-primary" type="submit">
+                <button class="btn btn-primary" type="submit" style="height: 37px; margin-top: 32px">
                     <i class="fas fa-search fa-sm"></i>
                 </button>
             </div>
         </div>
-        </form>
+</form>
 
     <div class="border mt-2">
 
@@ -34,13 +35,17 @@
                                                     <tr>
                                                         <th>Nombres</th>
                                                         <th>Apellidos</th>
+                                                        <th>E-mail</th>
+                                                        <th>Usuario</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    {% for a in object_list %}
+                                                    {% for a in filter.qs %}
                                                         <tr>
                                                             <td>{{ a.nombres }}</td>
                                                             <td> {{a.apellidos }}</td>
+                                                            <td> {{a.email }}</td>
+                                                            <td> {{a.username }}</td>
                                                             <td>
                                                                 <p>
                                                                     <a onclick="abrir_modal_creacion('{% url 'modificar_usuario' a.id %}')" class="btn btn-primary btn-block" style="color: white">Editar</a>
