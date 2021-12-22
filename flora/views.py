@@ -142,7 +142,7 @@ def generar_reporte_zona(request):
     for z in zonas:
         c.setFillColor(colors.black)
         c.setFont('Helvetica', 9)
-        c.drawString(x, y, z.Nombre + ' | ' + z.Descripcion)
+        c.drawString(x, y, z.Nombre + ' |o| ' + z.Descripcion)
         y -= 12
 
 
