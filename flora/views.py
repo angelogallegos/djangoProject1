@@ -1,14 +1,23 @@
+from fileinput import filename
 from urllib import request
-
+import os
+from io import BytesIO
+from reportlab.platypus import SimpleDocTemplate
+from reportlab.lib.pagesizes import letter
 from django.http import HttpResponse
 from django_filters import rest_framework as filters
-
 from django.shortcuts import render
-from django.views.generic import UpdateView, DeleteView, ListView, CreateView, TemplateView
+from django.views.generic import UpdateView, DeleteView, ListView, CreateView, TemplateView, View
 from django.urls import reverse_lazy
 import io
 from django.http import FileResponse
+from reportlab.lib import colors
+from reportlab.lib.enums import TA_CENTER
+from reportlab.lib.pagesizes import A4
+from reportlab.lib.styles import getSampleStyleSheet
+from reportlab.lib.units import cm
 from reportlab.pdfgen import canvas
+from reportlab.platypus import TableStyle, Table
 
 from flora.models import Zona
 from flora.models import Especie
@@ -19,6 +28,7 @@ from .filters import EspecieFilter
 
 
 from django.contrib.auth.decorators import login_required
+
 
 # Crud especie.
 class RegistrarEspecie(CreateView):
@@ -93,23 +103,54 @@ def especie_serializar(especie):
  #return {'Nombre': especie.Nombre, 'Imagen_1': '192.168.1.26:8000'+ especie.Imagen_Perfil.url}
 
 
-def generar_reporte(request):
-     buffer = io.BytesIO()
-     x = 100
-     y = 750
 
-     pz = canvas.Canvas(buffer)
 
-     pz.drawString(250, 800, "Reporte De Zona")
 
-     zonas = Zona.objects.all()
+def generar_reporte_zona(request):
 
-     for z in zonas:
-         pz.drawString(x,y, z.Nombre +' | '+ z.Descripcion)
-         y-=12
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename=Reporte_Zona.pdf'
 
-     pz.showPage()
-     pz.save()
+    buffer = io.BytesIO()
+    c = canvas.Canvas(buffer, pagesize=A4)
+    zonas = Zona.objects.all()
 
-     buffer.seek(0)
-     return FileResponse(buffer, as_attachment=True, filename='REPORTE.pdf')
+    x = 30
+    y = 630
+    documentTitle = 'Reporte de zonas'
+    c.setTitle(documentTitle)
+    image = './media/logo.jpg'
+
+    #header
+    c.setLineWidth(.3)
+    c.setFont('Helvetica', 22)
+    c.drawString(30,750,'Universidad')
+
+    c.setFont('Helvetica', 12)
+    c.drawString(30, 735, 'de Concepción')
+
+    c.drawInlineImage(image, 430, 750)
+    c.setFont('Helvetica-Bold', 12)
+    c.drawString(490, 750, 'UdeC')
+    c.line(460,747, 560, 747)
+
+    c.setFillColor(colors.darkgoldenrod)
+    c.setFont('Helvetica-Bold', 18)
+    c.drawString(230, 680, "Reporte de las Zonas")
+
+
+    for z in zonas:
+        c.setFillColor(colors.black)
+        c.setFont('Helvetica', 9)
+        c.drawString(x, y, z.Nombre + ' | ' + z.Descripcion)
+        y -= 12
+
+
+
+    #guardar pdf
+    c.save()
+
+
+    pdf = buffer.getvalue()
+    response.write(pdf)
+    return response
