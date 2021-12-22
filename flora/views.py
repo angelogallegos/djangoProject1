@@ -91,6 +91,8 @@ class EliminarZona(DeleteView):
     template_name = 'confirmar_elimminacion.html'
     success_url = reverse_lazy('mostrar_zona')
 
+
+# Zona de los json
 import json
 
 def buscar(request):
@@ -105,7 +107,7 @@ def especie_serializar(especie):
 
 
 
-
+# Zona de los reportes
 def generar_reporte_zona(request):
 
     response = HttpResponse(content_type='application/pdf')
@@ -142,7 +144,56 @@ def generar_reporte_zona(request):
     for z in zonas:
         c.setFillColor(colors.black)
         c.setFont('Helvetica', 9)
-        c.drawString(x, y, z.Nombre + ' |o| ' + z.Descripcion)
+        c.drawString(x, y, z.Nombre + ' |:| ' + z.Descripcion)
+        y -= 12
+
+
+
+    #guardar pdf
+    c.save()
+
+
+    pdf = buffer.getvalue()
+    response.write(pdf)
+    return response
+
+def generar_reporte_especie(request):
+
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename=Reporte_especie.pdf'
+
+    buffer = io.BytesIO()
+    c = canvas.Canvas(buffer, pagesize=A4)
+    especies = Especie.objects.all()
+
+    x = 30
+    y = 630
+    documentTitle = 'Reporte de especies'
+    c.setTitle(documentTitle)
+    image = './media/logo.jpg'
+
+    #header
+    c.setLineWidth(.3)
+    c.setFont('Helvetica', 22)
+    c.drawString(30,750,'Universidad')
+
+    c.setFont('Helvetica', 12)
+    c.drawString(30, 735, 'de Concepción')
+
+    c.drawInlineImage(image, 430, 750)
+    c.setFont('Helvetica-Bold', 12)
+    c.drawString(490, 750, 'UdeC')
+    c.line(460,747, 560, 747)
+
+    c.setFillColor(colors.darkgoldenrod)
+    c.setFont('Helvetica-Bold', 18)
+    c.drawString(230, 680, "Reporte de las especies")
+
+
+    for z in especies:
+        c.setFillColor(colors.black)
+        c.setFont('Helvetica', 9)
+        c.drawString(x, y, z.Nombre + ' |:| ' + z.Nombre_Cientifico + ' |:| ' + z.Altura+ ' |:| ' + z.Hojas+ ' |:| ' + z.Flores+ ' |:| ' + z.Semillas)
         y -= 12
 
 

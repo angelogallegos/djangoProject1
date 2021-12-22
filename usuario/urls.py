@@ -14,5 +14,7 @@ urlpatterns = [
     path('', views.login_view, name='login'),
     path('eliminar/usuario/<int:pk>', login_required (views.EliminarUsuario.as_view()), name='eliminar_usuario'),
     path('modificar/usuario/<int:pk>', login_required (views.ModificarUsuario.as_view()), name='modificar_usuario'),
-    path('buscar/usuarios/', views.buscar, name='buscar_usuarios')
+    path('buscar/usuarios/', views.buscar, name='buscar_usuarios'),
+    #reportes
+    path('reporte/usuario/', views.generar_reporte_usuario, name='reporte_usuario')
 ]

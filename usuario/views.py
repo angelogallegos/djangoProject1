@@ -5,7 +5,11 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.db.models import Q
-
+from reportlab.lib import colors
+from reportlab.lib.pagesizes import A4
+from reportlab.pdfgen import canvas
+from io import BytesIO
+import io
 from usuario.models import Usuario
 from usuario.forms import FormularioUsuario, FormularioLogin
 from .filters import UsuarioFilter
@@ -83,3 +87,53 @@ def buscar(request):
 
 def usuario_serializar(usuario):
     return {'Nombre': usuario.nombres, 'Apellido': usuario.apellidos, 'email': usuario.email, 'Usuario': usuario.username}
+
+# Zona de los reportes
+def generar_reporte_usuario(request):
+
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename=Reporte_Usuarios.pdf'
+
+    buffer = io.BytesIO()
+    c = canvas.Canvas(buffer, pagesize=A4)
+    usuarios = Usuario.objects.all()
+
+    x = 30
+    y = 630
+    documentTitle = 'Reporte de Usuarios'
+    c.setTitle(documentTitle)
+    image = './media/logo.jpg'
+
+    #header
+    c.setLineWidth(.3)
+    c.setFont('Helvetica', 22)
+    c.drawString(30,750,'Universidad')
+
+    c.setFont('Helvetica', 12)
+    c.drawString(30, 735, 'de Concepción')
+
+    c.drawInlineImage(image, 430, 750)
+    c.setFont('Helvetica-Bold', 12)
+    c.drawString(490, 750, 'UdeC')
+    c.line(460,747, 560, 747)
+
+    c.setFillColor(colors.darkgoldenrod)
+    c.setFont('Helvetica-Bold', 18)
+    c.drawString(230, 680, "Reporte de las Zonas")
+
+
+    for z in usuarios:
+        c.setFillColor(colors.black)
+        c.setFont('Helvetica', 9)
+        c.drawString(x, y, z.nombres + ',' + z.apellidos + ' = ' + z.username)
+        y -= 12
+
+
+
+    #guardar pdf
+    c.save()
+
+
+    pdf = buffer.getvalue()
+    response.write(pdf)
+    return response
