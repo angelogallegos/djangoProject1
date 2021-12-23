@@ -37,6 +37,7 @@
                                                         <th>Origen</th>
                                                         <th>Imagen</th>
                                                         <th>Imagen2</th>
+                                                        <th>Localización</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -59,10 +60,19 @@
                                                                 {% endif %}
 
                                                             </td>
+                                                        <td>
+                                                            <button onclick="location.href='{{a.Longitud}}'" class="btn btn-success btn-block">
+                                                                <i class="fas fa-map-marker-alt fa-sm"> Mapa</i>
+                                                                </button>
+                                                        </td>
                                                             <td>
                                                                 <p>
-                                                                    <a onclick="abrir_modal_creacion('{% url 'modificar_especie' a.id %}')" class="btn btn-primary btn-block" style="color: white">Editar</a>
-                                                                    <a onclick="abrir_modal_eliminar('{% url 'eliminar_especie' a.id %}')" class="btn btn-danger btn-block" style="color: white">Eliminar</a>
+                                                                    <a onclick="abrir_modal_creacion('{% url 'modificar_especie' a.id %}')" class="btn btn-primary btn-block" style="color: white">
+                                                                        <i class="fas fa-edit fa-sm"> Editar</i>
+                                                                        </a>
+                                                                    <a onclick="abrir_modal_eliminar('{% url 'eliminar_especie' a.id %}')" class="btn btn-danger btn-block" style="color: white">
+                                                                        <i class="fas fa-remove fa-sm"> Eliminar</i>
+                                                                    </a>
                                                                 </p>
                                                             </td>
                                                         </tr>

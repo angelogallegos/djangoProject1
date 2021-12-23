@@ -24,7 +24,7 @@ class Especie(models.Model):
     Zona = models.ManyToManyField(to='flora.Zona',through='flora.Ubicacion')
     QR = models.CharField(max_length=100, blank=True, null=True, default='')
     Imagen_QR = models.CharField(max_length=100, blank=True, null=True, default='')
-    Longitud = models.CharField(max_length=100, blank=True, null=True, default='')
+    Longitud = models.CharField(max_length=900, blank=True, null=True, default='')
     Latitud = models.CharField(max_length=100, blank=True, null=True, default='')
 
     def __int__(self):
