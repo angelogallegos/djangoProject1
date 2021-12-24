@@ -25,53 +25,89 @@
         </div>
 </form>
 
-    <div class="border mt-2">
-                                    <div class="card">
+    <div class="">
+                                    <div class="">
                                         <div class="table-stats order-table ov-h">
-                                            <table class="table">
-                                                <thead>
+                                            <table class="table table-bordered" style="border:2px solid black">
+                                                <thead style="background-color: darkgoldenrod; border-bottom: 3px solid black;">
                                                     <tr>
+                                                        <th>Perfil</th>
                                                         <th>Nombre</th>
                                                         <th>Nombre Cientifico</th>
                                                         <th>Autor</th>
                                                         <th>Origen</th>
-                                                        <th>Imagen</th>
-                                                        <th>Imagen2</th>
+                                                        <th>País</th>
+                                                        <th>Altura</th>
+                                                        <th>Tipo</th>
+                                                        <th>Estado</th>
+                                                        <th>Luminosidad</th>
+                                                        <th>Tolerancia al frío</th>
+                                                        <th>Humedad del suelo</th>
+                                                        <th>Hojas</th>
+                                                        <th>Flores</th>
+                                                        <th>Semillas</th>
+                                                        <th>Imagen 1</th>
+                                                        <th>Imagen 2</th>
+                                                        <th>Imagen 3</th>
                                                         <th>Localización</th>
+                                                        <th></th>
                                                     </tr>
                                                 </thead>
-                                                <tbody>
+                                                <tbody style="border-top: 1px solid black;">
                                                     {% for a in filter.qs %}
                                                         <tr>
+                                                            <td>
+                                                                {% if  a.Imagen_Perfil %}
+                                                                <img src="{{a.Imagen_Perfil.url}}" width="80" height="80" style="border-radius:150px;">
+                                                                {% endif %}
+
+                                                            </td>
+
                                                             <td>{{ a.Nombre }}</td>
                                                             <td> {{a.Nombre_Cientifico }}</td>
                                                             <td> {{a.Autor }}</td>
                                                             <td> {{a.Origen }}</td>
+                                                            <td> {{a.Pais }}</td>
+                                                            <td> {{a.Altura }}</td>
+                                                            <td> {{a.Tipo }}</td>
+                                                            <td> {{a.Estado }}</td>
+                                                            <td> {{a.Luminosidad }}</td>
+                                                            <td> {{a.Tolerancia_Frio }}</td>
+                                                            <td> {{a.Humedad_Suelo }}</td>
+                                                            <td> {{a.Hojas }}</td>
+                                                            <td> {{a.Flores }}</td>
+                                                            <td> {{a.Semillas }}</td>
 
-                                                            <td>
-                                                                {% if  a.Imagen_Perfil %}
-                                                                <img src="{{a.Imagen_Perfil.url}}" width="80" height="80">
-                                                                {% endif %}
 
-                                                            </td>
                                                         <td>
                                                                 {% if  a.Imagen1 %}
                                                                 <img src="{{a.Imagen1.url}}" width="80" height="80">
                                                                 {% endif %}
 
-                                                            </td>
+                                                        </td>
                                                         <td>
-                                                            <button onclick="location.href='{{a.Longitud}}'" class="btn btn-success btn-block">
-                                                                <i class="fas fa-map-marker-alt fa-sm"> Mapa</i>
-                                                                </button>
+                                                                {% if  a.Imagen2 %}
+                                                                <img src="{{a.Imagen2.url}}" width="80" height="80">
+                                                                {% endif %}
+
+                                                        </td>
+                                                        <td>
+                                                                {% if  a.Imagen3 %}
+                                                                <img src="{{a.Imagen3.url}}" width="80" height="80">
+                                                                {% endif %}
+
+                                                        </td>
+                                                        <td>
+
+                                                            <input type="button"  class="btn btn-success btn-block" value="Mapa" onclick="javascript:window.open('{{a.Longitud}}','','width=900,height=900,left=100,top=100,toolbar=yes');"/>
                                                         </td>
                                                             <td>
                                                                 <p>
                                                                     <a onclick="abrir_modal_creacion('{% url 'modificar_especie' a.id %}')" class="btn btn-primary btn-block" style="color: white">
-                                                                        <i class="fas fa-edit fa-sm"> Editar</i>
+                                                                        Editar
                                                                         </a>
                                                                     <a onclick="abrir_modal_eliminar('{% url 'eliminar_especie' a.id %}')" class="btn btn-danger btn-block" style="color: white">
-                                                                        <i class="fas fa-remove fa-sm"> Eliminar</i>
+                                                                        Eliminar
                                                                     </a>
                                                                 </p>
                                                             </td>

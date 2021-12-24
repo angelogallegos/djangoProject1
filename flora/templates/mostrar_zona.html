@@ -30,22 +30,27 @@
     <div class="border mt-2">
                                     <div class="card">
                                         <div class="table-stats order-table ov-h">
-                                            <table class="table">
-                                                <thead>
+                                            <table class="table table-bordered" style="border:2px solid black">
+                                                <thead style="background-color: darkgoldenrod; border-bottom: 3px solid black;">
                                                     <tr>
                                                         <th>Nombre</th>
                                                         <th>Descripcion</th>
+                                                        <th></th>
                                                     </tr>
                                                 </thead>
-                                                <tbody>
+                                                <tbody style="border-top: 1px solid black;">
                                                     {% for a in filter.qs %}
                                                         <tr>
                                                             <td>{{ a.Nombre }}</td>
                                                             <td> {{a.Descripcion }}</td>
                                                             <td>
                                                                 <p>
-                                                                    <a onclick="abrir_modal_creacion('{% url 'modificar_zona' a.id %}')" class="btn btn-primary btn-block" style="color: white">Editar</a>
-                                                                    <a onclick="abrir_modal_eliminar('{% url 'eliminar_zona' a.id %}')" class="btn btn-danger btn-block" style="color: white">Eliminar</a>
+                                                                    <a onclick="abrir_modal_creacion('{% url 'modificar_zona' a.id %}')" class="btn btn-primary btn-block" style="color: white">
+                                                                        Editar
+                                                                    </a>
+                                                                    <a onclick="abrir_modal_eliminar('{% url 'eliminar_zona' a.id %}')" class="btn btn-danger btn-block" style="color: white">
+                                                                        Eliminar
+                                                                    </a>
                                                                 </p>
                                                             </td>
                                                         </tr>

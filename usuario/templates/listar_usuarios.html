@@ -30,16 +30,17 @@
 
                                     <div class="card">
                                         <div class="table-stats order-table ov-h">
-                                            <table class="table">
-                                                <thead>
+                                            <table class="table table-bordered" style="border:2px solid black">
+                                                <thead style="background-color: darkgoldenrod; border-bottom: 3px solid black;">
                                                     <tr>
                                                         <th>Nombres</th>
                                                         <th>Apellidos</th>
                                                         <th>E-mail</th>
                                                         <th>Usuario</th>
+                                                        <th></th>
                                                     </tr>
                                                 </thead>
-                                                <tbody>
+                                                <tbody style="border-top: 1px solid black;">
                                                     {% for a in filter.qs %}
                                                         <tr>
                                                             <td>{{ a.nombres }}</td>
