@@ -24,7 +24,7 @@ urlpatterns = [
     path('buscar/especies/', views.buscar, name='buscar_especies'),
     #reportes
     path('reporte/zona/', views.generar_reporte_zona, name='reporte_zona'),
-    path('reporte/especie/', views.generar_reporte_especie, name='reporte_especie'),
+    path('reporte/especie/', views.generar_reporte_especie, name='reporte_especie')
 
 ]
 

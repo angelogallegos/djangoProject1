@@ -49,8 +49,8 @@
                                                         <th>Imagen 1</th>
                                                         <th>Imagen 2</th>
                                                         <th>Imagen 3</th>
-                                                        <th>Localización</th>
                                                         <th>QR</th>
+                                                        <th>Localización</th>
                                                         <th></th>
                                                     </tr>
                                                 </thead>
@@ -59,7 +59,7 @@
                                                         <tr>
                                                             <td>
                                                                 {% if  a.Imagen_Perfil %}
-                                                                <img src="{{a.Imagen_Perfil.url}}" width="80" height="80" style="border-radius:150px;">
+                                                                <img src="{{a.Imagen_Perfil.url}}" width="100" height="100" style="border-radius:150px;">
                                                                 {% endif %}
 
                                                             </td>
@@ -82,34 +82,36 @@
 
                                                         <td>
                                                                 {% if  a.Imagen1 %}
-                                                                <img src="{{a.Imagen1.url}}" width="80" height="80">
+                                                                <img src="{{a.Imagen1.url}}" width="100" height="100">
+                                                                    <a type="button" class="btn btn-info" href="{{a.Imagen1.url}}" target="_blank" style="width: 100px; height: 39px"> Ver</a>
                                                                 {% endif %}
 
                                                         </td>
                                                         <td>
                                                                 {% if  a.Imagen2 %}
-                                                                <img src="{{a.Imagen2.url}}" width="80" height="80">
+                                                                <img src="{{a.Imagen2.url}}" width="100" height="100">
+                                                                    <a type="button" class="btn btn-info" href="{{a.Imagen2.url}}" target="_blank" style="width: 100px; height: 39px"> Ver</a>
                                                                 {% endif %}
 
                                                         </td>
                                                         <td>
                                                                 {% if  a.Imagen3 %}
-                                                                <img src="{{a.Imagen3.url}}" width="80" height="80">
+                                                                <img src="{{a.Imagen3.url}}" width="100" height="100">
+                                                                    <a type="button" class="btn btn-info" href="{{a.Imagen3.url}}" target="_blank" style="width: 100px; height: 39px"> Ver</a>
                                                                 {% endif %}
 
+                                                        </td>
+                                                        <td style="align-content: center">
+                                                                {% if  a.qr_code %}
+                                                                <img src="{{a.qr_code.url}}" width="100" height="100">
+                                                                    <a type="button" class="btn btn-info" href="{{a.qr_code.url}}" download="imagen.png" target="_blank"> Descargar</a>
+                                                                {% endif %}
                                                         </td>
                                                         <td>
 
                                                             <input type="button"  class="btn btn-success btn-block" value="Mapa" onclick="javascript:window.open('{{a.Localizacion}}','','width=900,height=900,left=100,top=100,toolbar=yes');"/>
                                                         </td>
-                                                        <td style="align-content: center">
-                                                                {% if  a.qr_code %}
-                                                                <img src="{{a.qr_code.url}}" width="80" height="80">
-                                                                    <a type="button" class="btn btn-info" href="{{a.qr_code.url}}" download="imagen.png" target="_blank"> Descargar</a>
-                                                                {% endif %}
 
-
-                                                        </td>
                                                             <td>
                                                                 <p>
                                                                     <a onclick="abrir_modal_creacion('{% url 'modificar_especie' a.id %}')" class="btn btn-primary btn-block" style="color: white">
