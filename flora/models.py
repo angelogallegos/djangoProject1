@@ -1,5 +1,11 @@
-from django.db import models
+import uuid
 
+from django.db import models
+import qrcode
+from io import BytesIO
+from django.core.files import File
+from PIL import Image, ImageDraw
+from random import random
 
 # Create your models here.
 class Especie(models.Model):
@@ -22,12 +28,24 @@ class Especie(models.Model):
     Imagen2 = models.ImageField(upload_to="Imagenes", blank=True, null=True, default='')
     Imagen3 = models.ImageField(upload_to="Imagenes", blank=True, null=True, default='')
     Zona = models.ManyToManyField(to='flora.Zona',through='flora.Ubicacion')
-    QR = models.CharField(max_length=100, blank=True, null=True, default='')
-    Imagen_QR = models.CharField(max_length=100, blank=True, null=True, default='')
-    Localizacion = models.CharField(max_length=900, blank=True, null=True, default='')
+    QR = models.UUIDField(default=uuid.uuid4, unique=True, max_length=50)
+    qr_code = models.ImageField(upload_to="qr_codes", blank=True, null=True, default='')
+    Localizacion = models.CharField(max_length=900, blank=False, null=False, default='')
 
     def __int__(self):
         return self.id
+
+    def save(self, *args, **kwargs):
+        qrcode_img = qrcode.make(self.QR)
+        canvas = Image.new('RGB', (380, 380), 'white')
+        draw = ImageDraw.Draw(canvas)
+        canvas.paste(qrcode_img)
+        fname = f'qr_code-{self.QR}'+'.png'
+        buffer = BytesIO()
+        canvas.save(buffer,'PNG')
+        self.qr_code.save(fname, File(buffer), save=False)
+        canvas.close()
+        super().save(*args, **kwargs)
 
 
 class Tipo(models.Model):

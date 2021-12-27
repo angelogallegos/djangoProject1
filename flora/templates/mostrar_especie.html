@@ -50,6 +50,7 @@
                                                         <th>Imagen 2</th>
                                                         <th>Imagen 3</th>
                                                         <th>Localización</th>
+                                                        <th>QR</th>
                                                         <th></th>
                                                     </tr>
                                                 </thead>
@@ -100,6 +101,14 @@
                                                         <td>
 
                                                             <input type="button"  class="btn btn-success btn-block" value="Mapa" onclick="javascript:window.open('{{a.Localizacion}}','','width=900,height=900,left=100,top=100,toolbar=yes');"/>
+                                                        </td>
+                                                        <td style="align-content: center">
+                                                                {% if  a.qr_code %}
+                                                                <img src="{{a.qr_code.url}}" width="80" height="80">
+                                                                    <a type="button" class="btn btn-info" href="{{a.qr_code.url}}" download="imagen.png" target="_blank"> Descargar</a>
+                                                                {% endif %}
+
+
                                                         </td>
                                                             <td>
                                                                 <p>

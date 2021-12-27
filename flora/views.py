@@ -18,7 +18,9 @@ from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.lib.units import cm
 from reportlab.pdfgen import canvas
 from reportlab.platypus import TableStyle, Table
+from django.shortcuts import render
 
+import flora
 from flora.models import Zona
 from flora.models import Especie
 from flora.forms import FormularioZona
@@ -28,6 +30,8 @@ from .filters import EspecieFilter
 
 
 from django.contrib.auth.decorators import login_required
+#qr pagina
+
 
 
 # Crud especie.
@@ -94,6 +98,11 @@ class EliminarZona(DeleteView):
 
 # Zona de los json
 import json
+import socket
+
+
+ip = socket.gethostbyname(socket.gethostname()) + ':8000'
+#ip = '192.168.1.103:8000'
 
 def buscar(request):
     especies = Especie.objects.all()
@@ -101,7 +110,8 @@ def buscar(request):
     return HttpResponse(json.dumps(especies),content_type='application/json')
 
 def especie_serializar(especie):
-    return {'Nombre': especie.Nombre, 'Imagen_1': especie.Imagen_Perfil.url}
+    uuid_str = str(especie.QR)
+    return {'Nombre': especie.Nombre, 'Nombre cientifico': especie.Nombre_Cientifico, 'Autor': especie.Autor, 'Origen': especie.Origen.Nombre, 'País': especie.Pais, 'Altura': especie.Altura,  'Tipo': especie.Tipo.Nombre,  'Estado': especie.Estado.Nombre, 'Luminosidad': especie.Luminosidad.Nombre,'Tolerancia al frío': especie.Tolerancia_Frio.Nombre, 'Humedad del suelo': especie.Humedad_Suelo.Nombre, 'Hojas': especie.Hojas, 'Flores': especie.Flores, 'Semillas': especie.Semillas, 'Imagen de perfil': ip + especie.Imagen_Perfil.url, 'QR': uuid_str, 'Localizacion': especie.Localizacion}
  #return {'Nombre': especie.Nombre, 'Imagen_1': '192.168.1.26:8000'+ especie.Imagen_Perfil.url}
 
 
