@@ -13,4 +13,4 @@ class EspecieFilter(django_filters.FilterSet):
 
     class Meta:
         model = Especie
-        fields = ('Nombre','Nombre_Cientifico','Tipo','Estado','Tolerancia_Frio', 'Humedad_Suelo','Luminosidad')
+        fields = ('Nombre','Nombre_Cientifico','Origen','Tipo','Estado','Tolerancia_Frio', 'Humedad_Suelo','Luminosidad')

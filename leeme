@@ -35,7 +35,7 @@ pip install Pillow
 pip install reportlab
 
 
- python manage.py runserver 0.0.0.0:8000
+python manage.py runserver 0.0.0.0:8000
 python manage.py runserver 192.168.1.103:8000
 
 
