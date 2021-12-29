@@ -101,8 +101,8 @@ import json
 import socket
 
 
-ip = socket.gethostbyname(socket.gethostname()) + ':8000'
-#ip = '192.168.1.103:8000'
+#ip = socket.gethostbyname(socket.gethostname()) + ':8000'
+ip = '192.168.0.3:8000'
 
 def buscar(request):
     especies = Especie.objects.all()
@@ -111,7 +111,7 @@ def buscar(request):
 
 def especie_serializar(especie):
     uuid_str = str(especie.QR)
-    return {'Nombre': especie.Nombre, 'Nombre cientifico': especie.Nombre_Cientifico, 'Autor': especie.Autor, 'Origen': especie.Origen.Nombre, 'País': especie.Pais, 'Altura': especie.Altura,  'Tipo': especie.Tipo.Nombre,  'Estado': especie.Estado.Nombre, 'Luminosidad': especie.Luminosidad.Nombre,'Tolerancia al frío': especie.Tolerancia_Frio.Nombre, 'Humedad del suelo': especie.Humedad_Suelo.Nombre, 'Hojas': especie.Hojas, 'Flores': especie.Flores, 'Semillas': especie.Semillas, 'Imagen de perfil': ip + especie.Imagen_Perfil.url, 'QR': uuid_str, 'Localizacion': especie.Localizacion}
+    return {'Nombre': especie.Nombre, 'Nombre_Cientifico': especie.Nombre_Cientifico, 'Autor': especie.Autor, 'Origen': especie.Origen.Nombre, 'Pais': especie.Pais, 'Altura': especie.Altura,  'Tipo': especie.Tipo.Nombre,  'Estado': especie.Estado.Nombre, 'Luminosidad': especie.Luminosidad.Nombre,'Tolerancia_Frio': especie.Tolerancia_Frio.Nombre, 'Humedad_Suelo': especie.Humedad_Suelo.Nombre, 'Hojas': especie.Hojas, 'Flores': especie.Flores, 'Semillas': especie.Semillas, 'Imagen_Perfil': ip + especie.Imagen_Perfil.url, 'QR': uuid_str, 'Localizacion': especie.Localizacion}
  #return {'Nombre': especie.Nombre, 'Imagen_1': '192.168.1.26:8000'+ especie.Imagen_Perfil.url}
 
 
