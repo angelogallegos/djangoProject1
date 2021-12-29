@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a8be7ed2-7be9-4d2e-9501-9b5d72514abc" name="Changes" comment="" />
+    <list default="true" id="a8be7ed2-7be9-4d2e-9501-9b5d72514abc" name="Changes" comment="angelo">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/djangoProject1/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/djangoProject1/settings.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -64,8 +67,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1640749574380</updated>
-      <workItem from="1640749579393" duration="7577000" />
+      <workItem from="1640749579393" duration="8785000" />
     </task>
+    <task id="LOCAL-00001" summary="angelo">
+      <created>1640763462076</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1640763462077</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -81,5 +92,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="angelo" />
+    <option name="LAST_COMMIT_MESSAGE" value="angelo" />
   </component>
 </project>
